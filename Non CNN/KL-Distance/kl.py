@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageFilter, ImageDraw
 import numpy as np
 import warnings
-set(gca,'YDir','reverse');
+
+folder = input('Enter Genuine ID: ')
 def KL(a, b):
     a = np.asarray(a, dtype=np.float)
     b = np.asarray(b, dtype=np.float)
@@ -14,19 +15,22 @@ def KL(a, b):
 
 images = []
 names = []
-for img_path in glob.iglob('/Users/praky/Desktop/Work/SigVerification/*.png'):
-	# print(img_path)
+folders = []
+
+for img_path in glob.iglob('/Users/praky/Desktop/Work/SigVerification/signature-verification/Non CNN/*/*.png'):
+	if folder not in img_path:
+		continue
 	names.append(img_path)
 	img = Image.open(img_path)
 	img = img.resize((512, 256))
 	img = np.array(img)
 	img = cv2.cvtColor(img, cv2.IMREAD_GRAYSCALE)
-	plt.imshow(img)
-	plt.plot()
-	plt.show()
+	# plt.imshow(img)
+	# plt.plot()
+	# plt.show()
 	images.append(img)
 images = np.array(images, dtype='float') / 131072.0
-print(len(images))
+# print(len(images))
 
 # values1 = images[2]
 # values2 = images[1]
@@ -45,7 +49,9 @@ for i in range (len(images)):
 		values.append("%.2f" % KL(value1, value2))
 	kl_values.append(values)
 	values = []
-for i in range(len(kl_values)):
-	print(names[i][0], kl_values[i])
 
-# print(KL(values1, values2))
+validity_value = 0
+for i in range(len(kl_values)):
+	# print(names[i], kl_values[i])
+	if (validity_value < abs(float(max(kl_values[i])))):
+		validity_value = abs(float(max((kl_values[i]))))
