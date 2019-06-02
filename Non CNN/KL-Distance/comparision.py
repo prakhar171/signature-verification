@@ -19,14 +19,21 @@ for img_path in glob.iglob('/Users/praky/Desktop/Work/SigVerification/signature-
 	img = img.resize((512, 256))
 	img = np.array(img)
 	img = cv2.cvtColor(img, cv2.IMREAD_GRAYSCALE)
+	plt.imshow(img)
+	plt.plot()
+	plt.show()
 	images.append(img)
 
 images = np.array(images, dtype='float') / 131072.0
-
+# print(images[1])
 for i in range (len(images)-1):
+	# print(i)
 	# print(KL(images[i], images[len(images)-1]))
-	if abs(KL(images[i], images[len(images)-1])) < validity_value and abs(KL(images[len(images)-1]), images[i]) < validity_value:
-		print("Genuine")
-		break
+	# print(KL(images[len(images)-1], images[i]))
+	# print(images[len(images)-1])
+	if abs(KL(images[i], images[len(images)-1])) < validity_value:
+		if abs(KL(images[len(images)-1], images[i])) < validity_value:
+			print("Genuine")
+			break
 else:
 	print("Fake")

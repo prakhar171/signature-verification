@@ -37,7 +37,7 @@ images = np.array(images, dtype='float') / 131072.0
 kl_values = []
 values = []
 for i in range(len(names)):
-	names[i] = names[i][42:],
+	names[i] = names[i][83:],
 
 for i in range (len(images)):
 	value1 = images[i]
@@ -52,6 +52,6 @@ for i in range (len(images)):
 
 validity_value = 0
 for i in range(len(kl_values)):
-	# print(names[i], kl_values[i])
+	print(names[i], kl_values[i])
 	if (validity_value < abs(float(max(kl_values[i])))):
 		validity_value = abs(float(max((kl_values[i]))))
