@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/jquery.verySimpleImageViewer.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Oswald', 'Times New Roman', Times, serif !important;
+            font-style: italic;
+            background-image: linear-gradient(119deg, #4bb4e4, #61cb4a);
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+
+        <form>
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <h3><b><u>TO REFER</u></b></h3>
+                    <div class="form-check form-check-inline" style="margin-top: 11px;">
+                        <input class="form-check-input" type="radio" name="inlineRadioNash" id="inlineRadioNash"
+                            value="1">
+                        <label class="form-check-label">Nash</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioNash" id="inlineRadioCheque"
+                            value="2">
+                        <label class="form-check-label">Cheque</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioNash" id="inlineRadioPan"
+                            value="3">
+                        <label class="form-check-label">Pan</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 text-center">
+                    <h3><b><u>TO VERIFY</u></b></h3>
+                    <!-- <div class="form-check form-check-inline" style="margin-top: 11px;">
+                                <input class="form-check-input" type="radio" name="inlineRadioNashVerify" id="inlineRadioNashVerify" value="1">
+                                <label class="form-check-label">Nash</label>
+                                </div><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioNashVerify" id="inlineRadioChequeVerify" value="2">
+                                        <label class="form-check-label">Cheque</label>
+                                        </div> -->
+                </div>
+
+            </div>
+            <br>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div id="imageViewerContainer"
+                        style="width: 600px; height:450px; border: 5px solid whitesmoke;border-radius: 3px;margin-left:80px;">
+                    </div>
+
+                    <div class="form-group" style="margin-left: 80px;">
+                        <label for="exampleFormControlFile1"></label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                            onchange="getImagePath()">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div id="imageViewerContainer1"
+                        style="width: 600px; height:450px; border: 5px solid whitesmoke;border-radius: 3px;margin-left: 20px;">
+                    </div>
+                    <div class="form-group" style="margin-left: 20px;">
+                        <label for="exampleFormControlFile1"></label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile2" onchange="getImagePathToVerify()">
+                    </div>
+                </div>
+
+
+            </div>
+            <br>
+            <div class="row">
+
+                <div class="col-md-2" style="background:white;border:2px solid white;padding: 12px;margin-left: 93px;">
+                    <div class="checkboxes">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineNash1" value="1">
+                            <label class="form-check-label">Nash 1</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineNash2" value="2">
+                            <label class="form-check-label">Nash 2</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-8"
+                    style="background:white;border:2px solid white;padding: 12px;text-align: right;margin-left:65px;">
+                    <div class="checkboxes">
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inLinePan" value="0">
+                            <label class="form-check-label">PAN</label>
+                        </div>
+
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inLineCheque1" value="1">
+                            <label class="form-check-label">Cheque 1</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inLineCheque2" value="2">
+                            <label class="form-check-label">Cheque 2</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inLineCheque3" value="3">
+                            <label class="form-check-label">Cheque 3</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inLineCheque4" value="4">
+                            <label class="form-check-label">Cheque 4</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inLineCheque5" value="5">
+                            <label class="form-check-label">Cheque 5</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inLineCheque6" value="6">
+                            <label class="form-check-label">Cheque 6</label>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+        var v5 = "";
+        var v6="";
+        function getImagePath() {
+            let v1 = "";
+            let v2 = [];
+            let v3 = "";
+            let v4 = "images/";
+            v1 = document.getElementById('exampleFormControlFile1').value;
+
+            v2 = v1.split("\\");
+
+            v3 = v2[2];
+
+            v5 = "" + v4 + v3;
+
+            if (v5.length > 0) {
+                $('#imageViewerContainer').children('div').remove();
+                toLoadImage();
+            }
+            v5 = "";
+            v1 = "";
+        }
+
+
+        function toLoadImage() {
+            var curect_file_path = v5;
+            $("#imageViewerContainer").verySimpleImageViewer({
+                imageSource: curect_file_path,
+                frame: ['100%', '100%'],
+                maxZoom: '900%',
+                zoomFactor: '10%',
+                mouse: true,
+                keyboard: true,
+                toolbar: true
+
+            });
+        }
+        
+        function getImagePathToVerify() {
+            let v1 = "";
+            let v2 = [];
+            let v3 = "";
+            let v4 = "images/";
+            v1 = document.getElementById('exampleFormControlFile2').value;
+
+            v2 = v1.split("\\");
+
+            v3 = v2[2];
+
+            v6 = "" + v4 + v3;
+
+            if (v6.length > 0) {
+                $('#imageViewerContainer1').children('div').remove();
+                toLoadAnotherImage();
+            }
+            v6 = "";
+            v1 = "";
+        }
+
+        function toLoadAnotherImage(){
+        var curect_file_path = v6;
+        $("#imageViewerContainer1").verySimpleImageViewer({
+            imageSource: curect_file_path,
+            frame: ['100%', '100%'],
+            maxZoom: '900%',
+            zoomFactor: '10%',
+            mouse: true,
+            keyboard: true,
+            toolbar: true
+
+        });
+    }
+    </script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous">
+</script>
+<script src="js/jquery.verySimpleImageViewer.js"></script>
+</body>
+
+</html>

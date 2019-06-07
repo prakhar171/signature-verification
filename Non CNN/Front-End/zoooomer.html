@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jquery.verySimpleImageViewer.css">
+    
+    <style>
+.wrapper{
+width:80%;
+
+}
+.left{
+
+width:40%;
+height:50%;
+float: left;
+}
+.right{
+  width:40%;
+height:50%;
+float: right;
+}
+
+    </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <div class="left">
+        <h1>To Refer</h1> 
+       
+       <br>
+
+       <div class="btn-group btn-group-toggle" data-toggle="buttons">
+         
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2" autocomplete="off" checked> Cheque
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option3" autocomplete="off"> Nash
+          </label>
+        </div>
+   <br>
+        <div id="imageViewerContainer" style="width: 600px; height:400px; border: 3px solid red;" ></div>
+    </div>
+
+    <div class="right">
+      <h1>To Verify</h1>  
+      <br>
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+         
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option2" autocomplete="off" checked> Cheque
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off"> Nash
+            </label>
+          </div>
+
+        <br>
+        <div id="imageViewerContainer1" style="width: 600px; height:400px; border: 3px solid red;" ></div>
+      </div>
+
+  </div>
+
+  <div class="wrapper">
+    <div class="left-block" style="border:3px solid black;">
+
+    </div>
+
+    <div class="right-block" style="border:3px solid black;">
+
+    </div>
+  </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous">
+</script>
+<script src="js/jquery.verySimpleImageViewer.js"></script>
+
+
+<script>
+var curect_file_path = "images/1.jpg";
+        $("#imageViewerContainer").verySimpleImageViewer({
+            imageSource: curect_file_path,
+            frame: ['100%', '100%'],
+            maxZoom: '900%',
+            zoomFactor: '10%',
+            mouse: true,
+            keyboard: true,
+            toolbar: true
+
+        });
+
+        var curect_file_path = "images/Unknown.jpg";
+        $("#imageViewerContainer1").verySimpleImageViewer({
+            imageSource: curect_file_path,
+            frame: ['100%', '100%'],
+            maxZoom: '900%',
+            zoomFactor: '10%',
+            mouse: true,
+            keyboard: true,
+            toolbar: true
+
+        });
+</script>
+</body>
+</html>
