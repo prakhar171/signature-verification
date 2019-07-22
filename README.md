@@ -33,6 +33,20 @@ We now go back to the models directory and get the slim module.
 We are now ready to train the network, using the command. 
 `python3 train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_coco`
 
-Alternatively a pretrained model can be be run directly from the given cheques_graph directory. 
+Alternatively a pretrained model can be be run directly from the given cheque_graph directory. 
 
+To train this model further, the latest of the checkpoints along with the data can be copied to the models/object_detection/training/ directory and training can be restarted. 
 
+'''THE PATHS NEED TO BE RECONFIGURED DEPENDING ON THE LOCATION OF THE CLONED DIRECTORY'''.
+
+The detected region then needs to be stored in the 
+Non CNN/for-verification directory. 
+
+Now, in Non CNN/Back-End/
+`python3 kl.py`
+
+Enter the name of the folder with genuine images. The name of the image to be verified and the threshhold divergence based on pre existing data. This value is preset to the maximum divergence in the given real signatures and cannot be less than this, it can be more given on how strict the parameter needs to be. 
+
+The code will output the divergence along with the `accept` or `reject` depending on the kl distance of this image from the rest of the set which contains genuine signature samples.
+
+When the number of signatures is large, the CNN code can be used by putting the genuine signatures in a named folder and running the signature to be verified through that particular trained model. The model is a simple CNN and outputs yes or no which signifies if the signature is geniune or forged. 
