@@ -33,7 +33,12 @@ We now go back to the models directory and get the slim module.
 We are now ready to train the network, using the command. 
 `python3 train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_coco`
 
-Alternatively a pretrained model can be be run directly from the given cheque_graph directory. 
+Alternatively a pretrained model can be be run directly from the given cheque_graph directory.
+We now replace object_detection_tutorial.ipynb with object_detection_main.ipynb in the object_detection directory under the models directory.
+
+The image to be detected need to be stored in the test_images directory, rename it as image3 for easy although the code can be changed to specify the image name. 
+
+The image of the detected item is stored as cropped.jpg in the object_detection directory.
 
 To train this model further, the latest of the checkpoints along with the data can be copied to the models/object_detection/training/ directory and training can be restarted. 
 
@@ -43,8 +48,12 @@ The detected region then needs to be stored in the
 images/signature_extractor-master directory.
 
 `python3 crop_images.py` specify the image name
+The image should be copied into this directory from the object_detection directory. Consider changing names to avoid confusion.
+
 `python3 sharpen-pil.py`
+
 `python3 nearest-neighbour.py`
+
 `python3 signature-extractor.py`
 
 We store the output.png file in the Non\ CNN/for-verification folder.
