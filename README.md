@@ -2,7 +2,6 @@
 Signature forgery and fraud detection
 We first extract cheques from a picture using a YOLO model. Clone the following repository and make the following changes
 
-
 `git clone https://github.com/tensorflow/models.git`
 Go into the models directory and clone the following repository.
 
@@ -16,8 +15,9 @@ To get the images and pretrained model, go into the object_detection directory, 
 
 Coming back to the main object_detection folder, we can finally get the ssd_coconet file from the following command. 
 
-`wget https://raw.githubusercontent.com/tensorflow/models/master/object_detection/samples/configs/ssd_mobilenet_v1_pets.config`
-
+`wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017.tar.gz`
+or 
+`wget http://download.tensorflow.org/models/object_detection/faster_rcnn_resnet101_coco_2018_01_28.tar.gz `
 
 We check the protobuf version and install jupyter and matplotlib 
 `sudo apt-get install protobuf-compiler python-pil python-lxml
@@ -31,7 +31,8 @@ We now go back to the models directory and get the slim module.
     `export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim`  and then `sudo python3 setup.py`
     
 We are now ready to train the network, using the command. 
-`python3 train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_coco`
+`python3 train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_coco #use the config file of the model downloaded`
+
 
 Alternatively a pretrained model can be be run directly from the given cheque_graph directory.
 We now replace object_detection_tutorial.ipynb with object_detection_main.ipynb in the object_detection directory under the models directory.
