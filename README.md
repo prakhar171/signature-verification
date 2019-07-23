@@ -22,11 +22,11 @@ or
 We check the protobuf version and install jupyter and matplotlib 
 `sudo apt-get install protobuf-compiler python-pil python-lxml
 sudo pip install jupyter
-sudo pip install matplotlib
+sudo pip install matplotlib`
 And then:
 
 # From tensorflow/models/
-protoc object_detection/protos/*.proto --python_out=.`
+`protoc object_detection/protos/*.proto --python_out=.`
 We now go back to the models directory and get the slim module. 
     `export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim`  and then `sudo python3 setup.py`
     
