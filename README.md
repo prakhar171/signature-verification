@@ -40,7 +40,14 @@ To train this model further, the latest of the checkpoints along with the data c
 '''THE PATHS NEED TO BE RECONFIGURED DEPENDING ON THE LOCATION OF THE CLONED DIRECTORY'''.
 
 The detected region then needs to be stored in the 
-Non CNN/for-verification directory. 
+images/signature_extractor-master directory.
+
+`python3 crop_images.py` specify the image name
+`python3 sharpen-pil.py`
+`python3 nearest-neighbour.py`
+`python3 signature-extractor.py`
+
+We store the output.png file in the Non\ CNN/for-verification folder.
 
 Now, in Non CNN/Back-End/
 `python3 kl.py`
