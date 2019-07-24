@@ -33,9 +33,15 @@ We now go back to the models directory and get the slim module.
 We are now ready to train the network, using the command. 
 `python3 train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_coco #use the config file of the model downloaded`
 
-
 Alternatively a pretrained model can be be run directly from the given cheque_graph directory.
 We now replace object_detection_tutorial.ipynb with object_detection_main.ipynb in the object_detection directory under the models directory.
+
+Incase a model is trained, we need to export it, so we can employ it for later training or detectoin. 
+`python3 export_inference_graph.py \
+    --input_type image_tensor \
+    --pipeline_config_path training/{name of the file used}.config \
+    --trained_checkpoint_prefix training/model.ckpt-{number of steps} \
+    --output_directory cheques_graph_inference_graph`
 
 The image to be detected need to be stored in the test_images directory, rename it as image3 for easy although the code can be changed to specify the image name. 
 
@@ -53,17 +59,17 @@ The image should be copied into this directory from the object_detection directo
 
 `python3 sharpen-pil.py`
 
-`python3 nearest-neighbour.py`
+`python3 nearest-neighbour.py` {Can be configured depending on the quality of images, can change the black ranges. Default = 20}
 
-`python3 signature-extractor.py`
+`python3 signature-extractor.py` 
 
 We store the output.png file in the Non\ CNN/for-verification folder.
 
 Now, in Non CNN/Back-End/
-`python3 kl.py`
+`python3 comparision.py`
 
 Enter the name of the folder with genuine images. The name of the image to be verified and the threshhold divergence based on pre existing data. This value is preset to the maximum divergence in the given real signatures and cannot be less than this, it can be more given on how strict the parameter needs to be. 
 
-The code will output the divergence along with the `accept` or `reject` depending on the kl distance of this image from the rest of the set which contains genuine signature samples.
+The code will output the divergence along with the `Genuine` or `Fake` depending on the kl distance of this image from the rest of the set which contains genuine signature samples.
 
-When the number of signatures is large, the CNN code can be used by putting the genuine signatures in a named folder and running the signature to be verified through that particular trained model. The model is a simple CNN and outputs yes or no which signifies if the signature is geniune or forged. 
+When the number of signatures is large, the CNN code can be used by putting the genuine signatures in a named folder and running the signature to be verified through that particular trained model. The model is a simple CNN and outputs Genuine or Fake which signifies if the signature is geniune or forged. 
