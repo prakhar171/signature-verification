@@ -11,7 +11,7 @@ picture = input('Enter picture name to verify: ')
 images = np.array(images, dtype='float') * 131072.0
 images = list(images)
 
-for img_path in glob.iglob('/Users/praky/Desktop/Work/SigVerification/signature-verification/Non CNN/for-verification/*.png'):
+for img_path in glob.iglob('../for-verification/*.png'):
 	if picture not in img_path:
 		continue
 	# print(img_path)

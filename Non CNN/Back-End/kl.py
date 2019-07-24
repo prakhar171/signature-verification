@@ -17,7 +17,7 @@ images = []
 names = []
 folders = []
 
-for img_path in glob.iglob('/Users/praky/Desktop/Work/SigVerification/signature-verification/Non CNN/*/*.png'):
+for img_path in glob.iglob('../*/*.png'):
 	if folder not in img_path:
 		continue
 	names.append(img_path)
